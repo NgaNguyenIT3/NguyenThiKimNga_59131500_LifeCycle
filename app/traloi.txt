@@ -1,0 +1,32 @@
+4. Cho biết các phương thức vòng đời được gọi khi ứng dụng đang chạy và người sử
+dụng bấm vào nút back sau đó mở lại ứng dụng.
+	Trả lời:
+	- Khi ứng dụng đang chạy và người dùng bấm nút back có nghĩa là chương trình ứng dụng
+	đang chạy sẽ bị hủy. Nên ứng dụng sẽ lần lượt chuyển qua các phương thức tạm dừng OnPause, 
+	rồi đến OnStop vì bị màn hình home đè lên, cuối cùng là phương thức hủy OnDestroy. Sau đó 
+	khi mở lại ứng dụng thì các phương thức vòng đời được gọi tiếp theo lần lượt là OnCreate,
+	OnStart, OnResume đưa màn hình lên đỉnh để thấy được ứng dụng đó chạy.
+
+5. Cho biết các phương thức vòng đời được gọi khi ứng dụng đang chạy và người sử
+dụng bấm vào nút home và sau đó mở lại ứng dụng.
+	Trả lời:
+	- Khi ứng dụng đang chạy và người dùng nhấn nút home có nghĩa là ứng dụng bị màn hình 
+	home đè lên chứ không phải bị hủy nên ứng dụng chuyển qua phương thức OnPause -> OnStop. 
+	Khi mở lại ứng dụng các phương thức sẽ được gọi từ OnStop -> OnRestart -> OnStart 
+	-> OnResume.
+
+6. Nếu cần lưu thông tin của ứng dụng để khôi phục lại trạng thái hiển thị của ứng dụng
+khi chạy lại ứng dụng thì cần phải thực hiện trong phương thức vòng đời nào? vì sao?
+	Trả lời:
+	- Để khôi phục lại trạng thái hiển thị của ứng dụng khi chạy lại ứng dụng thì cần phải 
+	thực hiện trong phương thức OnResume hoặc OnStart. Vì khi thực hiện trong phương thức 
+	OnResum thì dù bấm nút home hay back, khi mở lại ứng dụng các phương thức được gọi cuối 
+	cùng vẫn đến OnResume để đưa màn hình ứng dụng lên đỉnh và sẽ thấy được dữ liệu được cập 
+	nhật của ứng dụng lên trên màn hình này và khởi tạo các thông số trước đó lên trên màn 
+	hình. Còn nếu trong phương thức OnStart thì khi ứng dụng ở OnStop sẽ gọi đến OnRestart 
+	-> OnStart sẽ khôi phục lại trạng thái của ứng dụng và hiển thị lên màn hình ở OnResume 
+	khi ứng dụng chạy.
+
+	
+
+ 
